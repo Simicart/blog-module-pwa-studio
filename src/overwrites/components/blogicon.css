@@ -1,0 +1,30 @@
+.root {
+    align-items: center;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    line-height: 1;
+    pointer-events: auto;
+    text-align: center;
+    white-space: nowrap;
+    transition-property: color;
+    transition-duration: 224ms;
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    height: 3rem;
+    width: 3rem;
+}
+
+.label {
+    display: none;
+}
+
+@media (min-width: 641px) {
+    .root {
+        width: auto;
+    }
+
+    .label {
+        display: initial;
+        margin-inline-start: 0.25rem;
+    }
+}
