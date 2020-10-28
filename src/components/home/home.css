@@ -1,0 +1,27 @@
+.homeCtn {
+    padding: 15px;
+}
+.blogRoot {
+    display: flex;
+    margin-top: 25px;
+}
+.blogListing {
+    width: 65%;
+}
+.blogSidebar {
+    width: 35%;
+    min-width: 220px;
+    padding-inline-start: 25px;
+}
+
+@media (max-width: 1023px) {
+    .blogRoot {
+        flex-wrap: wrap;
+    }
+    .blogListing {
+        width: 100%;
+    }
+    .blogSidebar {
+        width: 100%;
+    }
+}

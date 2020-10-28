@@ -1,0 +1,41 @@
+.blogEmpty {
+    text-align: center;
+    padding-top: 20px;
+}
+.blogpostItem {
+    width: 100%;
+    border: 1px solid #eee;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+.blogpostItem:hover {
+    box-shadow: 0px 5px 15px -5px;
+    transition: box-shadow 0.3s ease-in-out;
+}
+.blogpostItem h2 {
+    color: #1abc9c;
+    margin-bottom: 10px;
+    font-weight: 300;
+    line-height: 1.1;
+    font-size: 22px;
+    margin-top: 0;
+}
+.blogpostInfo {
+    font-size: 13px;
+}
+.calendarIcon, .authorIcon, .eyeIcon, .calendarData, .authorName{
+    margin-inline-end: 5px;
+    margin-inline-start: 5px;
+}
+.blogpostDescription {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    line-height: 22px;
+}
+.readMore {
+    margin-top: 15px;
+    line-height: 18px;
+    color: #1abc9c;
+    font-size: 17px;
+}
