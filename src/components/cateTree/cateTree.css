@@ -1,0 +1,30 @@
+.catetreeRoot {
+    padding: 5px;
+}
+.catetreeHeader {
+    margin-top: 15px;
+}
+.dropdownSelect {
+    margin-top: 15px;
+}
+.dropdownSelect > div > a {
+    display: none !important;
+}
+
+.dropdownSelect > div > div {
+    padding: 15px;
+    display: block !important;
+    box-shadow: none !important;
+    position: relative !important;
+    width: 100%;
+}
+.dropdownSelect input {
+    display: none;
+}
+
+.dropdownSelect i {
+    margin-right: 15px;
+    font-style: unset;
+    display: inline-block;
+    width: 15px;
+}

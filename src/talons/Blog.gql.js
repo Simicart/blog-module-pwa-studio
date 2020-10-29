@@ -105,10 +105,6 @@ const PostFragment = gql`
         import_source
         layout
     }
-    ${CategoryFragment}
-    ${TagFragment}
-    ${TopicFragment}
-    ${ProductFragment}
 `
 
 export const GET_BLOG_POSTS = gql`
@@ -177,4 +173,29 @@ export const GET_BLOG_POSTS = gql`
     }
     ${PostFragment}
     ${PageInfoFragment}
+    ${CategoryFragment}
+    ${TagFragment}
+    ${TopicFragment}
+    ${ProductFragment}
 `;
+
+
+export const GET_SEARCH_BLOG_POST = gql`
+    query mpBlogPosts (
+        $query : String!
+    ) {
+        mpBlogPosts (
+            action : "get_post_list",
+            filter : {
+                name : {
+                    like: $query
+                }
+            }
+        ) {
+            items {
+                ...PostFragment
+            }
+        }
+    }
+    ${PostFragment}
+`

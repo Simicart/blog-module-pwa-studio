@@ -28,8 +28,6 @@
     flex-shrink: 0;
     flex-basis: 200px;
     margin-inline-end: 15px;
-    max-height: 200px;
-    overflow: hidden;
 }
 .blogpostItemCol1 img {
     width: 100%;

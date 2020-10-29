@@ -29,7 +29,8 @@
     "@magento/venia-drivers": "src/drivers"
   },
   "dependencies": {
-    "@magento/pwa-buildpack": "~7.0.0"
+    "@magento/pwa-buildpack": "~7.0.0",
+    "react-dropdown-tree-select": "^2.5.1"
   },
   "devDependencies": {
     "@adobe/apollo-link-mutation-queue": "~1.0.2",

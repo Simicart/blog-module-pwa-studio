@@ -5,7 +5,6 @@ import { useBlogListing } from '../../talons/useBlogListing'
 import LoadingIndicator from '@magento/venia-ui/lib/components/LoadingIndicator';
 import BlogListingItem from '../blogListingItem'
 import Pagination from '@magento/venia-ui/lib/components/Pagination';
-import Select from '@magento/venia-ui/lib/components/Select';
 
 const BlogListing = props => {
     const { filterType, filterValue } = props;
@@ -21,7 +20,7 @@ const BlogListing = props => {
     } = talonProps
 
     useEffect(() => {
-        if (!blogLoading) {
+        if (blogLoading) {
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
         }

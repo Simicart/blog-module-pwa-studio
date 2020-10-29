@@ -3,6 +3,7 @@ import BreadCrumb from '../breadcrumb/index';
 import classes from './home.css';
 import BlogListing from '../blogListing/index'
 import SearchBlog from '../searchBlog'
+import CateTree from '../cateTree'
 
 const Home = props => {
     console.log(props)
@@ -23,6 +24,7 @@ const Home = props => {
                 </div>
                 <div className={classes.blogSidebar}>
                     <SearchBlog />
+                    <CateTree />
                 </div>
             </div>
         </div>
