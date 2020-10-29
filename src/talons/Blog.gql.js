@@ -179,7 +179,6 @@ export const GET_BLOG_POSTS = gql`
     ${ProductFragment}
 `;
 
-
 export const GET_SEARCH_BLOG_POST = gql`
     query mpBlogPosts (
         $query : String!
@@ -198,4 +197,17 @@ export const GET_SEARCH_BLOG_POST = gql`
         }
     }
     ${PostFragment}
+`
+
+export const GET_BLOG_CATEGORIES = gql`
+    query mpBlogCategories{
+        mpBlogCategories (
+            action : "get_category_list"
+        ) {
+            items {
+                ...CategoryFragment
+            }
+        }
+    }
+    ${CategoryFragment}
 `

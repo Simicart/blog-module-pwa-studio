@@ -60,7 +60,7 @@ const SearchBlog = props => {
                                         setQuery(document.getElementById('blog-search-input-field').value)
                                 }, 2000)
                             }}
-                            placeHolder={`Search blogs here...`}
+                            placeholder={`Search blogs here...`}
                         />
                     </div>
                 </div>

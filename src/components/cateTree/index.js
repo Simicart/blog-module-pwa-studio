@@ -1,54 +1,21 @@
 import React from 'react';
-import classes from './cateTree.css'
+import { useCateTree } from '../../talons/useCateTree'
 import DropdownTreeSelect from 'react-dropdown-tree-select'
 import 'react-dropdown-tree-select/dist/styles.css'
-
-const data = [
-    {
-        label: 'search me',
-        value: 'searchme',
-        children: [
-            {
-                label: 'search me too',
-                value: 'searchmetoo',
-                children: [
-                    {
-                        label: 'No one can get me',
-                        value: 'anonymous',
-                    },
-                ],
-            },
-        ],
-    },
-    {
-        label: 'search me',
-        value: 'searchme',
-        children: [
-            {
-                label: 'search me too',
-                value: 'searchmetoo',
-                children: [
-                    {
-                        label: 'No one can get me',
-                        value: 'anonymous',
-                    },
-                ],
-            },
-        ],
-    }
-]
+import classes from './cateTree.css'
+import { useHistory } from '@magento/venia-drivers';
 
 const onChange = (currentNode, selectedNodes) => {
-    console.log('onChange::', currentNode, selectedNodes)
-}
-const onAction = (node, action) => {
-    console.log('onAction::', action, node)
-}
-const onNodeToggle = currentNode => {
-    console.log('onNodeToggle::', currentNode)
+    
 }
 
 const CateTree = props => {
+    const { dataCateTree } = useCateTree()
+    const history = useHistory();
+
+    if (!dataCateTree || !dataCateTree.length)
+        return ''
+
     return (
         <div className={classes.catetreeRoot}>
             <div className={classes.catetreeHeader}>{`Categories`}</div>
@@ -56,8 +23,10 @@ const CateTree = props => {
                 className={classes.dropdownSelect}
                 keepChildrenOnSearch={true}
                 showDropdown="always"
-                data={data} onChange={onChange}
-                onAction={onAction} onNodeToggle={onNodeToggle}
+                data={dataCateTree}
+                onChange={currentNode => {
+                    history.push(`/blog/category/${currentNode.url_key}.html`)
+                }}
                 keepDropdownActive={true}
             />
         </div>
