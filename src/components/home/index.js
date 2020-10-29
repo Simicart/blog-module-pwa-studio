@@ -2,6 +2,7 @@ import React from 'react'
 import BreadCrumb from '../breadcrumb/index';
 import classes from './home.css';
 import BlogListing from '../blogListing/index'
+import SearchBlog from '../searchBlog'
 
 const Home = props => {
     console.log(props)
@@ -21,7 +22,7 @@ const Home = props => {
                     <BlogListing classes={classes} />
                 </div>
                 <div className={classes.blogSidebar}>
-                    b
+                    <SearchBlog />
                 </div>
             </div>
         </div>

@@ -1,5 +1,17 @@
 import gql from 'graphql-tag';
 
+
+const PageInfoFragment = gql`
+    fragment PageInfoFragment on PageInfo {
+        pageSize
+        currentPage
+        hasNextPage
+        hasPreviousPage
+        startPage
+        endPage
+    }
+`
+
 const CategoryFragment = gql`
     fragment CategoryFragment on Category {
         category_id
@@ -77,8 +89,6 @@ const PostFragment = gql`
         post_id
         name
         short_description
-        post_content
-        store_ids
         image
         enabled
         url_key
@@ -94,30 +104,6 @@ const PostFragment = gql`
         publish_date
         import_source
         layout
-        categories {
-            total_count
-            items {
-                ...CategoryFragment
-            }
-        }
-        tags {
-            total_count
-            items {
-                ...TagFragment
-            }
-        }
-        topics {
-            total_count
-            items {
-                ...TopicFragment
-            }
-        }
-        products {
-            total_count
-            items {
-                ...ProductFragment
-            }
-        }
     }
     ${CategoryFragment}
     ${TagFragment}
@@ -152,6 +138,30 @@ export const GET_BLOG_POSTS = gql`
         ) {
             items {
                 ...PostFragment
+                categories {
+                    total_count
+                    items {
+                        ...CategoryFragment
+                    }
+                }
+                tags {
+                    total_count
+                    items {
+                        ...TagFragment
+                    }
+                }
+                topics {
+                    total_count
+                    items {
+                        ...TopicFragment
+                    }
+                }
+                products {
+                    total_count
+                    items {
+                        ...ProductFragment
+                    }
+                }
                 posts {
                     total_count
                     items {
@@ -160,7 +170,11 @@ export const GET_BLOG_POSTS = gql`
                 }
             }
             total_count
+            pageInfo {
+                ...PageInfoFragment
+            }
         }
     }
     ${PostFragment}
+    ${PageInfoFragment}
 `;
