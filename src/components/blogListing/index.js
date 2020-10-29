@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 import defaultClasses from './blogListing.css'
 import { useBlogListing } from '../../talons/useBlogListing'
@@ -20,6 +20,13 @@ const BlogListing = props => {
         setPageSize
     } = talonProps
 
+    useEffect(() => {
+        if (!blogLoading) {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    }, [blogLoading]);
+
     if (blogLoading)
         return <LoadingIndicator />
     if (blogError || !blogData || !blogData.mpBlogPosts)
@@ -32,7 +39,7 @@ const BlogListing = props => {
         <div className={classes.blogListingCtn} >
             {
                 mpBlogPosts.items.map(item =>
-                    <BlogListingItem classes={classes} item={item} />
+                    <BlogListingItem classes={classes} item={item} key={item.post_id} />
                 )
             }
             <div className={classes.pagination}>
@@ -42,7 +49,10 @@ const BlogListing = props => {
                 {`Show `}
                 <span className={classes.pageSizeInput}>
                     <select
-                        onChange={e => { setPageSize(e.target.value) }}
+                        onChange={e => {
+                                setPageSize(e.target.value); pageControl.setPage(1)
+                            }
+                        }
                         value={pageSize}
                     >
                         <option value="5" >5</option>

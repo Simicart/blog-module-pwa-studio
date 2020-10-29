@@ -32,7 +32,7 @@ const BlogPostInfo = props => {
                             {`Post In`} {
                                 categories.items.map(
                                     (categoryItem, index) =>
-                                        <React.Fragment>
+                                        <React.Fragment key={index}>
                                             <Link to={`/blog/category/${categoryItem.url_key}.html`}>
                                                 {categoryItem.name}
                                             </Link>

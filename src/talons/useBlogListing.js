@@ -58,13 +58,17 @@ export const useBlogListing = props => {
             derivedErrorMessage = errorTarget.message;
         }
         if (derivedErrorMessage) {
-            addToast({
-                type: 'error',
-                icon: errorIcon,
-                message: derivedErrorMessage,
-                dismissable: true,
-                timeout: 7000
-            });
+            if (currentPage && currentPage > 1) {
+                window.location.href = '/blog.html';
+            } else {
+                addToast({
+                    type: 'error',
+                    icon: errorIcon,
+                    message: derivedErrorMessage,
+                    dismissable: true,
+                    timeout: 7000
+                });
+            }
         }
     }
 

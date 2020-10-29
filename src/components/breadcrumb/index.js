@@ -8,8 +8,8 @@ const BreadCrumb = props => {
         < div className={classes.breadCrumb} >
             <Link className={classes.breadCrumbLink} to="/">{`Home`}</Link>
             {
-                items.map(item =>
-                    <React.Fragment>
+                items.map((item, index) =>
+                    <React.Fragment key={index}>
                         <span className={classes.breadCrumbSeparator}>{`/`}</span>
                         {
                             item.path ?
