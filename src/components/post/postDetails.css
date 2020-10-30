@@ -61,7 +61,7 @@
     padding: 20px;
 }
 .blogpostInfo {
-    font-size: 13px;
+    font-size: 11px;
 }
 .calendarIcon,
 .authorIcon,
@@ -107,4 +107,58 @@
 .relatedPostBlogInfo {
     text-align: start;
     margin-bottom: 30px;
+    font-size: 11px;
+}
+.sharingBlock {
+    padding: 20px 30px;
+    background: #f6f6f6;
+    margin-top: 40px;
+    position: relative;
+}
+.sharingLabel {
+    width: 40%;
+    display: inline-block;
+}
+.sharingItems {
+    width: 60%;
+    display: inline-block;
+}
+.shareMoreBtn {
+    padding: 0.5em 0.75em;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    border-radius: 5px;
+    border-color: #333;
+    border: solid 1px;
+    margin: 0.5em;
+    display: inline-block;
+    cursor: pointer;
+}
+.shareMore {
+    position: absolute;
+    top: 120px;
+    right: 10px;
+    background-color: white;
+    padding: 5px;
+    border: solid 1px #eaeaea;
+    z-index: 2;
+}
+.relatedProductSlide {
+    width: 100%;
+    overflow: auto;
+    display: flex;
+}
+.relatedProductSlideItem {
+    width: 30%;
+}
+@media (max-width: 767px) {
+    .sharingLabel, .sharingItems {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .sharingBlock a span {
+        display: none;
+    }
+    .shareMore {
+        top: 160px;
+    }
 }

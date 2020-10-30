@@ -13,6 +13,7 @@ import SidebarPosts from '../sidebarPosts';
 import RichContent from '@magento/venia-ui/lib/components/RichContent';
 import BlogPostInfo from '../blogPostInfo';
 import RelatedPosts from './relatedPosts';
+import SharingBlock from '../sharingBlock';
 
 const Post = props => {
     const { postUrl = "" } = useParams();
@@ -30,8 +31,6 @@ const Post = props => {
         return 'Cannot find item';
 
     const postData = resultData.mpBlogPosts.items[0];
-
-    console.log(postData)
     return (
         <div className={classes.root}>
             <Title>{postData.meta_title ? postData.meta_title : postData.name}</Title>
@@ -53,13 +52,14 @@ const Post = props => {
             <h1>{postData.name}</h1>
             <div className={classes.blogDetailsRoot}>
                 <div className={classes.blogDetailsContent}>
-                    {   !!postData.image &&
+                    {!!postData.image &&
                         <img src={`/media/mageplaza/blog/post/${postData.image}`} alt="post image" className={classes.blogpostImage} />
                     }
                     <RichContent classes={{ root: classes.blogPostRichContent }} html={postData.post_content} />
                     <div className={classes.blogDetailsPostInfo}>
                         <BlogPostInfo item={postData} classes={classes} />
                     </div>
+                    <SharingBlock classes={classes} />
                     {!!(postData && postData.posts && postData.posts.items && postData.posts.items.length) &&
                         <div className={`${classes.relatedPosts} ${classes.detailsSection}`}>
                             <div className={classes.sectionHeader}>
@@ -67,6 +67,26 @@ const Post = props => {
                             </div>
                             <div className={classes.sectionContent}>
                                 <RelatedPosts classes={classes} items={postData.posts.items} />
+                            </div>
+                        </div>
+                    }
+                    {!!(postData && postData.products && postData.products.items && postData.products.items.length) &&
+                        <div className={`${classes.relatedPosts} ${classes.detailsSection}`}>
+                            <div className={classes.sectionHeader}>
+                                {`Related Products`}
+                            </div>
+                            <div className={classes.sectionContent}>
+                                <div className={classes.relatedProductSlide}>
+                                    {
+                                        postData.products.items.map(productItem => {
+                                            return (
+                                                <div className={classes.relatedProductSlideItem}>
+                                                    <div>{productItem.sku}</div>
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </div>
                             </div>
                         </div>
                     }

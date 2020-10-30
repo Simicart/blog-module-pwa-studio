@@ -3,9 +3,9 @@ import { Link } from '@magento/venia-drivers';
 import Icon from '@magento/venia-ui/lib/components/Icon';
 import { Calendar as CalendarIc, User as AuthorIc, Eye as EyeIc } from 'react-feather';
 
-const calenderIcon = <Icon src={CalendarIc} attrs={{ width: 13 }} />;
-const authorIcon = <Icon src={AuthorIc} attrs={{ width: 13 }} />;
-const eyeIcon = <Icon src={EyeIc} attrs={{ width: 13 }} />;
+const calenderIcon = <Icon src={CalendarIc} attrs={{ width: 11 }} />;
+const authorIcon = <Icon src={AuthorIc} attrs={{ width: 11 }} />;
+const eyeIcon = <Icon src={EyeIc} attrs={{ width: 11 }} />;
 
 const BlogPostInfo = props => {
     const { classes, item } = props;
