@@ -12,6 +12,7 @@ import TopicList from '../topicList';
 import SidebarPosts from '../sidebarPosts';
 import RichContent from '@magento/venia-ui/lib/components/RichContent';
 import BlogPostInfo from '../blogPostInfo';
+import RelatedPosts from './relatedPosts';
 
 const Post = props => {
     const { postUrl = "" } = useParams();
@@ -28,8 +29,9 @@ const Post = props => {
     if (!resultData || !resultData.mpBlogPosts || !resultData.mpBlogPosts.items || !resultData.mpBlogPosts.items[0])
         return 'Cannot find item';
 
-    const postData = resultData.mpBlogPosts.items[0]
+    const postData = resultData.mpBlogPosts.items[0];
 
+    console.log(postData)
     return (
         <div className={classes.root}>
             <Title>{postData.meta_title ? postData.meta_title : postData.name}</Title>
@@ -51,11 +53,23 @@ const Post = props => {
             <h1>{postData.name}</h1>
             <div className={classes.blogDetailsRoot}>
                 <div className={classes.blogDetailsContent}>
-                    <img src={`/media/mageplaza/blog/post/${postData.image}`} alt="post image" className={classes.blogpostImage} />
+                    {   !!postData.image &&
+                        <img src={`/media/mageplaza/blog/post/${postData.image}`} alt="post image" className={classes.blogpostImage} />
+                    }
                     <RichContent classes={{ root: classes.blogPostRichContent }} html={postData.post_content} />
                     <div className={classes.blogDetailsPostInfo}>
                         <BlogPostInfo item={postData} classes={classes} />
                     </div>
+                    {!!(postData && postData.posts && postData.posts.items && postData.posts.items.length) &&
+                        <div className={`${classes.relatedPosts} ${classes.detailsSection}`}>
+                            <div className={classes.sectionHeader}>
+                                {`Related Posts`}
+                            </div>
+                            <div className={classes.sectionContent}>
+                                <RelatedPosts classes={classes} items={postData.posts.items} />
+                            </div>
+                        </div>
+                    }
                 </div>
                 <div className={classes.blogSidebar}>
                     <SearchBlog />
@@ -65,7 +79,7 @@ const Post = props => {
                     <TagList />
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

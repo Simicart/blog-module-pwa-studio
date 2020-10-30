@@ -341,6 +341,12 @@ export const GET_BLOG_POST_BY_URL_KEY = gql`
                     total_count
                     items {
                         ...PostFragment
+                        categories {
+                            total_count
+                            items {
+                                ...CategoryFragment
+                            }
+                        }
                     }
                 }
             }

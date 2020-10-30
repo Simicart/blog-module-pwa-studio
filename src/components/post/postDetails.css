@@ -71,3 +71,40 @@
     margin-inline-end: 5px;
     margin-inline-start: 5px;
 }
+
+.detailsSection {
+    margin-top: 15px;
+}
+.sectionHeader {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+.relatedPosts ul li {
+    background-color: unset !important;
+}
+.relatedPostItem {
+    width: 30%;
+    display: inline-grid;
+    padding: 15px;
+}
+.relatedPostItem.isPhone {
+    width: 100%;
+}
+.blogrelatedPostImage {
+    width: 100%;
+    padding-top: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 15px;
+}
+.relatedPostName {
+    text-align: start;
+    margin-bottom: 15px;
+    color: #1abc9c;
+    font-size: 20px;
+    line-height: 26px;
+}
+.relatedPostBlogInfo {
+    text-align: start;
+    margin-bottom: 30px;
+}
