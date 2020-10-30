@@ -1,8 +1,11 @@
 .tagListRoot {
     padding: 5px;
+    border-top: solid 1px #eaeaea;
+    margin-top: 15px;
 }
 .tagListHeader {
     margin-top: 15px;
+    font-size: 20px;
 }
 .tagItems {
     margin-top: 15px;

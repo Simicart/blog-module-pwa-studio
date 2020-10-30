@@ -5,6 +5,9 @@ import BlogListing from '../blogListing/index'
 import SearchBlog from '../searchBlog'
 import CateTree from '../cateTree'
 import TagList from '../tagList'
+import TopicList from '../topicList'
+import SidebarPosts from '../sidebarPosts'
+
 
 const Home = props => {
     console.log(props)
@@ -25,7 +28,9 @@ const Home = props => {
                 </div>
                 <div className={classes.blogSidebar}>
                     <SearchBlog />
+                    <SidebarPosts />
                     <CateTree />
+                    <TopicList />
                     <TagList />
                 </div>
             </div>

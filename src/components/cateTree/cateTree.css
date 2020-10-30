@@ -1,8 +1,11 @@
 .catetreeRoot {
     padding: 5px;
+    border-top: solid 1px #eaeaea;
+    margin-top: 15px;
 }
 .catetreeHeader {
     margin-top: 15px;
+    font-size: 20px;
 }
 .dropdownSelect {
     margin-top: 15px;
@@ -17,6 +20,7 @@
     box-shadow: none !important;
     position: relative !important;
     width: 100%;
+    border-top: none !important;
 }
 .dropdownSelect input {
     display: none;

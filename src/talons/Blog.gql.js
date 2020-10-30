@@ -158,12 +158,6 @@ export const GET_BLOG_POSTS = gql`
                         ...ProductFragment
                     }
                 }
-                posts {
-                    total_count
-                    items {
-                        ...PostFragment
-                    }
-                }
             }
             total_count
             pageInfo {
@@ -192,7 +186,13 @@ export const GET_SEARCH_BLOG_POST = gql`
             }
         ) {
             items {
-                ...PostFragment
+                post_id
+                name
+                short_description
+                image
+                enabled
+                url_key
+                publish_date
             }
         }
     }
@@ -227,4 +227,38 @@ export const GET_BLOG_TAGS = gql`
         }
     }
     ${TagFragment}
+`
+
+export const GET_BLOG_TOPICS = gql`
+    query mpBlogTopics{
+        mpBlogTopics {
+            items {
+                ...TopicFragment
+            }
+        }
+    }
+    ${TopicFragment}
+`
+
+
+export const GET_SIDEBAR_BLOG_POSTS = gql`
+    query mpBlogPosts (
+        $filter : PostsFilterInput,
+    ) {
+        mpBlogPosts (
+            action : "get_post_list"
+            filter: $filter
+            pageSize: 5
+        ) {
+            items {
+                post_id
+                name
+                short_description
+                image
+                enabled
+                url_key
+                publish_date
+            }
+        }
+    }
 `
