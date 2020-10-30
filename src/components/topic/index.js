@@ -1,12 +1,12 @@
 import React from 'react'
 import BreadCrumb from '../breadcrumb/index';
 import classes from '../home/home.css';
-import BlogListing from '../blogListing/index'
-import SearchBlog from '../searchBlog'
-import CateTree from '../cateTree'
-import TagList from '../tagList'
-import TopicList from '../topicList'
-import SidebarPosts from '../sidebarPosts'
+import BlogListing from '../blogListing/index';
+import SearchBlog from '../searchBlog';
+import CateTree from '../cateTree';
+import TagList from '../tagList';
+import TopicList from '../topicList';
+import SidebarPosts from '../sidebarPosts';
 import { useParams } from "react-router-dom";
 import LoadingIndicator from '@magento/venia-ui/lib/components/LoadingIndicator';
 import { useQuery } from '@apollo/client';

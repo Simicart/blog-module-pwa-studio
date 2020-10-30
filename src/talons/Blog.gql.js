@@ -139,24 +139,6 @@ export const GET_BLOG_POSTS = gql`
                         ...CategoryFragment
                     }
                 }
-                tags {
-                    total_count
-                    items {
-                        ...TagFragment
-                    }
-                }
-                topics {
-                    total_count
-                    items {
-                        ...TopicFragment
-                    }
-                }
-                products {
-                    total_count
-                    items {
-                        ...ProductFragment
-                    }
-                }
             }
             total_count
             pageInfo {
@@ -167,9 +149,6 @@ export const GET_BLOG_POSTS = gql`
     ${PostFragment}
     ${PageInfoFragment}
     ${CategoryFragment}
-    ${TagFragment}
-    ${TopicFragment}
-    ${ProductFragment}
 `;
 
 export const GET_SEARCH_BLOG_POST = gql`
@@ -318,3 +297,58 @@ export const GET_TAG_BY_URL_KEY = gql`
     }
     ${TagFragment}
 `
+
+export const GET_BLOG_POST_BY_URL_KEY = gql`
+    query mpBlogPosts (
+        $url_key : String!,
+    ) {
+        mpBlogPosts (
+            action : "get_post_list"
+            filter: {
+                url_key : {
+                    eq : $url_key
+                }
+            }
+        ) {
+            items {
+                ...PostFragment
+                post_content
+                categories {
+                    total_count
+                    items {
+                        ...CategoryFragment
+                    }
+                }
+                tags {
+                    total_count
+                    items {
+                        ...TagFragment
+                    }
+                }
+                topics {
+                    total_count
+                    items {
+                        ...TopicFragment
+                    }
+                }
+                products {
+                    total_count
+                    items {
+                        ...ProductFragment
+                    }
+                }
+                posts {
+                    total_count
+                    items {
+                        ...PostFragment
+                    }
+                }
+            }
+        }
+    }
+    ${PostFragment}
+    ${CategoryFragment}
+    ${TagFragment}
+    ${TopicFragment}
+    ${ProductFragment}
+`;

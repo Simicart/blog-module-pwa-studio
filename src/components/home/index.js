@@ -1,13 +1,12 @@
 import React from 'react'
 import BreadCrumb from '../breadcrumb/index';
 import classes from './home.css';
-import BlogListing from '../blogListing/index'
-import SearchBlog from '../searchBlog'
-import CateTree from '../cateTree'
-import TagList from '../tagList'
-import TopicList from '../topicList'
-import SidebarPosts from '../sidebarPosts'
-
+import BlogListing from '../blogListing/index';
+import SearchBlog from '../searchBlog';
+import CateTree from '../cateTree';
+import TagList from '../tagList';
+import TopicList from '../topicList';
+import SidebarPosts from '../sidebarPosts';
 
 const Home = props => {
     return (
