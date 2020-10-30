@@ -1,6 +1,5 @@
 import React from 'react'
 import { useSearchBox } from '../../talons/useSearchBox'
-import SearchField from '@magento/venia-ui/lib/components/SearchBar/SearchField';
 import { Form } from 'informed';
 import classes from './search.css'
 import LoadingIndicator from '@magento/venia-ui/lib/components/LoadingIndicator';
