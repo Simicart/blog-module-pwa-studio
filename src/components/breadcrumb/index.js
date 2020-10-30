@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from './breadCrumb.css';
+import classes from './breadcrumb.css';
 import { Link } from '@magento/venia-drivers';
 
 const BreadCrumb = props => {
