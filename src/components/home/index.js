@@ -10,9 +10,8 @@ import SidebarPosts from '../sidebarPosts'
 
 
 const Home = props => {
-    console.log(props)
     return (
-        <div className={classes.homeCtn}>
+        <div className={classes.mainCtn}>
             <BreadCrumb items={
                 [
                     {

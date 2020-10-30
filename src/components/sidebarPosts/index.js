@@ -36,14 +36,14 @@ const SidebarPosts = props => {
 
     const popPosts = useMemo(() => {
         if (popData && popData.mpBlogPosts && popData.mpBlogPosts.items) {
-            return popData.mpBlogPosts.items.map(item => <PostItem item={item} />)
+            return popData.mpBlogPosts.items.map(item => <PostItem item={item} key={item.url_key}/>)
         }
         return []
     }, [latestData])
 
     const latestPosts = useMemo(() => {
         if (latestData && latestData.mpBlogPosts && latestData.mpBlogPosts.items) {
-            return latestData.mpBlogPosts.items.map(item => <PostItem item={item} />)
+            return latestData.mpBlogPosts.items.map(item => <PostItem item={item} key={item.url_key}/>)
         }
         return []
     }, [latestData])

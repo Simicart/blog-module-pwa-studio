@@ -1,6 +1,5 @@
 import gql from 'graphql-tag';
 
-
 const PageInfoFragment = gql`
     fragment PageInfoFragment on PageInfo {
         pageSize
@@ -240,7 +239,6 @@ export const GET_BLOG_TOPICS = gql`
     ${TopicFragment}
 `
 
-
 export const GET_SIDEBAR_BLOG_POSTS = gql`
     query mpBlogPosts (
         $filter : PostsFilterInput,
@@ -261,4 +259,62 @@ export const GET_SIDEBAR_BLOG_POSTS = gql`
             }
         }
     }
+`
+
+export const GET_CATE_BY_URL_KEY = gql`
+    query mpBlogCategories(
+        $url_key : String!
+    ){
+        mpBlogCategories (
+            action : "get_category_list"
+            filter: {
+                url_key : {
+                    eq : $url_key
+                }
+            }
+        ) {
+            items {
+                ...CategoryFragment
+            }
+        }
+    }
+    ${CategoryFragment}
+`
+
+export const GET_TOPIC_BY_URL_KEY = gql`
+    query mpBlogTopics(
+        $url_key : String!
+    ){
+        mpBlogTopics (
+            filter: {
+                url_key : {
+                    eq : $url_key
+                }
+            }
+        ) {
+            items {
+                ...TopicFragment
+            }
+        }
+    }
+    ${TopicFragment}
+`
+
+export const GET_TAG_BY_URL_KEY = gql`
+    query mpBlogTags(
+        $url_key : String!
+    ){
+        mpBlogTags (
+            filter: {
+                url_key : {
+                    eq : $url_key
+                }
+            }
+        ) {
+            items {
+                ...TagFragment
+            }
+        }
+    }
+    ${TagFragment}
 `

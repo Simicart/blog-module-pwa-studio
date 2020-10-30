@@ -9,6 +9,7 @@ import { usePagination } from '@magento/peregrine';
 const errorIcon = <Icon src={AlertCircleIcon} attrs={{ width: 18 }} />;
 
 export const useBlogListing = props => {
+    const { filterType, filterValue } = props;
     const [pageSize, setPageSize] = useState(10);
     const [paginationValues, paginationApi] = usePagination();
     const { currentPage, totalPages } = paginationValues;
@@ -20,17 +21,34 @@ export const useBlogListing = props => {
         totalPages
     };
 
+    const variables = {
+        action: filterType ? filterType : 'get_post_list',
+        currentPage: parseInt(currentPage),
+        pageSize: parseInt(pageSize)
+    }
+    switch (filterType) {
+        case 'get_post_by_categoryId':
+            variables.categoryId = parseInt(filterValue);
+            break;
+        case 'get_post_by_topic':
+            variables.topicId = parseInt(filterValue);
+            break;
+        case 'get_post_by_authorName':
+            variables.authorName = filterValue;
+            break;
+        case 'get_post_by_tagName':
+            variables.tagName = filterValue;
+            break;
+        default:
+            break;
+    }
     const {
         data: blogData,
         loading: blogLoading,
         error: blogError
     } = useQuery(GET_BLOG_POSTS,
         {
-            variables: {
-                action: 'get_post_list',
-                currentPage: parseInt(currentPage),
-                pageSize: parseInt(pageSize)
-            }
+            variables
         }
     )
 

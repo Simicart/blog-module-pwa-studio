@@ -32,7 +32,7 @@ const BlogListing = props => {
         return ''
     const { mpBlogPosts } = blogData;
     if (!mpBlogPosts.items || !mpBlogPosts.total_count)
-        return <div className={classes.blogEmpty} >{'Cannot find any post'}</div>
+        return <div className={classes.blogEmpty} >{'There are no posts at this moment'}</div>
 
     return (
         <div className={classes.blogListingCtn} >

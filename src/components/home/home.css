@@ -1,5 +1,10 @@
-.homeCtn {
+.mainCtn {
     padding: 15px;
+}
+.mainCtn h1 {
+    font-size: 36px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .blogRoot {
     display: flex;

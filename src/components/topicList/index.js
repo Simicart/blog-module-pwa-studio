@@ -21,7 +21,7 @@ const TopicList = () => {
                 <div className={classes.topicItems}>
                     {topicItems.map(topicItem => {
                         return (
-                            <Link className={classes.topicItem} to={`/blog/topic/${topicItem.url_key}.html`}>
+                            <Link className={classes.topicItem} to={`/blog/topic/${topicItem.url_key}.html`} key={topicItem.name}>
                                 {folderIcon} {topicItem.name}
                             </Link>
                         )

@@ -34,7 +34,7 @@ const TagList = () => {
 
                         }
                         return (
-                            <Link className={classes.tagItem} to={`/blog/tag/${tagItem.url_key}.html`} style={{ fontSize: tagFontSize }}>
+                            <Link className={classes.tagItem} to={`/blog/tag/${tagItem.url_key}.html`} style={{ fontSize: tagFontSize }} key={tagItem.name}>
                                 {tagItem.name}
                             </Link>
                         )
