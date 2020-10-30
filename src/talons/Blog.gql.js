@@ -203,6 +203,7 @@ export const GET_BLOG_CATEGORIES = gql`
     query mpBlogCategories{
         mpBlogCategories (
             action : "get_category_list"
+            pageSize: 999
         ) {
             items {
                 ...CategoryFragment
@@ -210,4 +211,20 @@ export const GET_BLOG_CATEGORIES = gql`
         }
     }
     ${CategoryFragment}
+`
+
+export const GET_BLOG_TAGS = gql`
+    query mpBlogTags{
+        mpBlogTags {
+            items {
+                ...TagFragment
+                posts {
+                    items {
+                        post_id
+                    }
+                }
+            }
+        }
+    }
+    ${TagFragment}
 `

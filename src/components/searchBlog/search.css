@@ -22,6 +22,7 @@
     left: 0;
     background-color: white;
     width: 100%;
+    z-index: 2;
 }
 .searchItem {
     width: 100%;

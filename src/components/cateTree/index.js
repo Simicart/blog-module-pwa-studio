@@ -5,10 +5,6 @@ import 'react-dropdown-tree-select/dist/styles.css'
 import classes from './cateTree.css'
 import { useHistory } from '@magento/venia-drivers';
 
-const onChange = (currentNode, selectedNodes) => {
-    
-}
-
 const CateTree = props => {
     const { dataCateTree } = useCateTree()
     const history = useHistory();

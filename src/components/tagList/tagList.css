@@ -1,0 +1,25 @@
+.tagListRoot {
+    padding: 5px;
+}
+.tagListHeader {
+    margin-top: 15px;
+}
+.tagItems {
+    margin-top: 15px;
+}
+.tagItem {
+    background: #fff;
+    border: 1px solid #bbb;
+    color: inherit;
+    font-weight: normal;
+    font-size: 100%;
+    border-radius: 1px;
+    display: inline-block;
+    margin-bottom: 5px;
+    padding: 10px;
+    margin-right: 5px;
+}
+.tagItem:hover {
+    background-color: #1abc9c;
+    color: white;
+}
