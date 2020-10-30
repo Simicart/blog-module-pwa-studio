@@ -174,7 +174,6 @@ export const GET_SEARCH_BLOG_POST = gql`
             }
         }
     }
-    ${PostFragment}
 `
 
 export const GET_BLOG_CATEGORIES = gql`
