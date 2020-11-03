@@ -3,12 +3,34 @@
 }
 .root h1 {
     font-size: 36px;
-    margin-top: 20px;
-    margin-bottom: 20px;
 }
+
 .blogDetailsRoot {
     display: flex;
     margin-top: 25px;
+}
+.blogDetailsRoot h1, h2, h3, h4, h5, h6 {
+    margin-top: calc(13px + 1.2em);
+    margin-bottom: calc(10px + 0.2em);
+    font-weight: 700;
+    letter-spacing: normal;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+.blogDetailsRoot h2 {
+    font-size: 1.6315em;
+}
+.blogDetailsRoot h3 {
+    font-size: 1.368em;
+}
+.blogDetailsRoot h4 {
+    font-size: 1.21em;
+}
+.blogDetailsRoot h5 {
+    font-size: 1.05em;
+}
+.blogDetailsRoot h6 {
+    font-size: 1em;
 }
 .blogDetailsContent {
     width: 70%;
@@ -34,6 +56,12 @@
     display: block;
     font-size: 16px;
     line-height: 22px;
+}
+.blogPostRichContent a {
+    color: #1abc9c;
+}
+.blogPostRichContent a:hover {
+    text-decoration: underline;
 }
 .blogPostRichContent h2 {
     margin-top: 10px;
@@ -125,7 +153,7 @@
 }
 .shareMoreBtn {
     padding: 0.5em 0.75em;
-    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     border-radius: 5px;
     border-color: #333;
     border: solid 1px;
@@ -151,7 +179,8 @@
     width: 30%;
 }
 @media (max-width: 767px) {
-    .sharingLabel, .sharingItems {
+    .sharingLabel,
+    .sharingItems {
         width: 100%;
         margin-bottom: 10px;
     }

@@ -19,7 +19,7 @@ const BlogListingItem = props => {
             </div> : ''}
             <div className={classes.blogpostItemCol2} >
                 <h2>
-                    <Link to={`/blog/post/${url_key}.html`}>
+                    <Link to={`/blog/post/${url_key}.html`} style={{color: '#1ABC9C'}}>
                         {name}
                     </Link>
                 </h2>

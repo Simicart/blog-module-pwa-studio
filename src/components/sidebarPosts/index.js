@@ -12,15 +12,19 @@ const PostItem = props => {
         url_key
     } = props.item;
     return (
-        <Link className={classes.sidebarPostItem} to={`/blog/post/${url_key}.html`}>
-            {image ? <div className={classes.sidebarPostItemImage} >
-                <img src={`/media/mageplaza/blog/post/resize/400x/${image}`} alt={name} />
-            </div> : ''}
+        <div className={classes.sidebarPostItem}>
+            {
+                image ? <div className={classes.sidebarPostItemImage} >
+                    <img src={`/media/mageplaza/blog/post/resize/400x/${image}`} alt={name} />
+                </div> : ''
+            }
             <div className={classes.sidebarPostItemInfo}>
-                <div className={classes.sidebarPostItemName}>{name}</div>
+                <Link className={classes.sidebarPostItemName} to={`/blog/post/${url_key}.html`}>
+                    {name}
+                </Link>
                 <div className={classes.sidebarPostItemDate}>{publish_date}</div>
             </div>
-        </Link>
+        </div>
     )
 }
 
@@ -36,14 +40,14 @@ const SidebarPosts = props => {
 
     const popPosts = useMemo(() => {
         if (popData && popData.mpBlogPosts && popData.mpBlogPosts.items) {
-            return popData.mpBlogPosts.items.map(item => <PostItem item={item} key={item.url_key}/>)
+            return popData.mpBlogPosts.items.map(item => <PostItem item={item} key={item.url_key} />)
         }
         return []
     }, [latestData])
 
     const latestPosts = useMemo(() => {
         if (latestData && latestData.mpBlogPosts && latestData.mpBlogPosts.items) {
-            return latestData.mpBlogPosts.items.map(item => <PostItem item={item} key={item.url_key}/>)
+            return latestData.mpBlogPosts.items.map(item => <PostItem item={item} key={item.url_key} />)
         }
         return []
     }, [latestData])
