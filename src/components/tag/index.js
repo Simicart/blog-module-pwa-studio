@@ -7,6 +7,7 @@ import CateTree from '../cateTree';
 import TagList from '../tagList';
 import TopicList from '../topicList';
 import SidebarPosts from '../sidebarPosts';
+import SimibarMonthlyListing from '../simibarMonthlyListing';
 import { useParams } from "react-router-dom";
 import LoadingIndicator from '@magento/venia-ui/lib/components/LoadingIndicator';
 import { useQuery } from '@apollo/client';
@@ -61,6 +62,7 @@ const Tag = props => {
                     <SearchBlog />
                     <SidebarPosts />
                     <CateTree />
+                    <SimibarMonthlyListing />
                     <TopicList />
                     <TagList />
                 </div>

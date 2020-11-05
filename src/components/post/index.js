@@ -10,6 +10,7 @@ import CateTree from '../cateTree';
 import TagList from '../tagList';
 import TopicList from '../topicList';
 import SidebarPosts from '../sidebarPosts';
+import SimibarMonthlyListing from '../simibarMonthlyListing';
 import RichContent from '@magento/venia-ui/lib/components/RichContent';
 import BlogPostInfo from '../blogPostInfo';
 import RelatedPosts from './relatedPosts';
@@ -95,6 +96,7 @@ const Post = props => {
                     <SearchBlog />
                     <SidebarPosts />
                     <CateTree />
+                    <SimibarMonthlyListing />
                     <TopicList />
                     <TagList />
                 </div>

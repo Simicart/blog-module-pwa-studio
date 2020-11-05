@@ -224,11 +224,12 @@ export const GET_BLOG_TOPICS = gql`
 export const GET_SIDEBAR_BLOG_POSTS = gql`
     query mpBlogPosts (
         $sortBy : String,
+        $pageSize : Int,
     ) {
         mpBlogPosts (
             action : "get_post_list"
             sortBy: $sortBy
-            pageSize: 5
+            pageSize: $pageSize
         ) {
             items {
                 post_id
@@ -361,3 +362,19 @@ export const GET_BLOG_POST_BY_URL_KEY = gql`
     ${TopicFragment}
     ${ProductFragment}
 `;
+
+export const GET_BLOG_ARCHIVE = gql`
+    query mpBlogMonthlyArchive{
+        mpBlogMonthlyArchive {
+            items {
+                label
+                quantity
+                items {
+                    ...PostFragment
+                }
+            }
+            total_count
+        }
+    }
+    ${PostFragment}
+`

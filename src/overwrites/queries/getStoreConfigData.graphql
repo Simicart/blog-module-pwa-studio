@@ -1,0 +1,23 @@
+query storeConfigData {
+    storeConfig {
+        id
+        copyright
+    }
+    mpBlogConfigs {
+        general {
+            name
+            toplinks
+            display_author
+            display_style
+            font_color
+        }
+        sidebar {
+            number_recent_posts
+            number_mostview_posts
+        }
+        seo {
+            meta_title
+            meta_description
+        }
+    }
+}
