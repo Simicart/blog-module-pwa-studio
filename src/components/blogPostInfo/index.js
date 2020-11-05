@@ -14,7 +14,7 @@ const BlogPostInfo = props => {
         categories,
         author_name,
         author_url_key,
-        view_count
+        view_traffic
     } = item;
 
     return (
@@ -49,14 +49,14 @@ const BlogPostInfo = props => {
                 {authorIcon}
             </span>
             <span className={classes.authorName}>
-                <Link to={`/blog/category/${author_url_key}.html`}>
+                <Link to={`/blog/author/${author_url_key}.html`}>
                     {author_name}
                 </Link>
             </span> |
             <span className={classes.eyeIcon}>
                 {eyeIcon}
             </span>
-            <span className={classes.viewCount}>{view_count}</span>
+            <span className={classes.viewCount}>{view_traffic}</span>
         </div>
     )
 }

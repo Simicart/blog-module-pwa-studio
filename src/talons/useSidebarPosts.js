@@ -8,12 +8,20 @@ export const useSidebarPosts = props => {
     const {
         data: popData,
         loading: popLoading
-    } = useQuery(GET_SIDEBAR_BLOG_POSTS);
+    } = useQuery(GET_SIDEBAR_BLOG_POSTS, {
+        variables: {
+            sortBy: 'Popular'
+        }
+    });
 
     const {
         data: latestData,
         loading: latestLoading
-    } = useQuery(GET_SIDEBAR_BLOG_POSTS)
+    } = useQuery(GET_SIDEBAR_BLOG_POSTS, {
+        variables: {
+            sortBy: 'Latest'
+        }
+    })
 
     return {
         tab,

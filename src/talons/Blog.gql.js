@@ -100,9 +100,13 @@ const PostFragment = gql`
         created_at
         updated_at
         author_id
+        author_url
+        author_url_key
+        author_name
         publish_date
         import_source
         layout
+        view_traffic
     }
 `
 
@@ -219,11 +223,11 @@ export const GET_BLOG_TOPICS = gql`
 
 export const GET_SIDEBAR_BLOG_POSTS = gql`
     query mpBlogPosts (
-        $filter : PostsFilterInput,
+        $sortBy : String,
     ) {
         mpBlogPosts (
             action : "get_post_list"
-            filter: $filter
+            sortBy: $sortBy
             pageSize: 5
         ) {
             items {
