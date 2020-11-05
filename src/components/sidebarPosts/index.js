@@ -15,7 +15,7 @@ const PostItem = props => {
         <div className={classes.sidebarPostItem}>
             {
                 image ? <div className={classes.sidebarPostItemImage} >
-                    <img src={`/media/mageplaza/blog/post/resize/400x/${image}`} alt={name} />
+                    <img src={image} alt={name} />
                 </div> : ''
             }
             <div className={classes.sidebarPostItemInfo}>

@@ -30,7 +30,7 @@ const SearchBlog = props => {
             searchResult.push(
                 <Link className={classes.searchItem} to={`/blog/post/${url_key}.html`}>
                     {image ? <div className={classes.searchItemImage} >
-                        <img src={`/media/mageplaza/blog/post/resize/400x/${image}`} alt={name} />
+                        <img src={image} alt={name} />
                     </div> : ''}
                     <div className={classes.searchItemInfo}>
                         <div className={classes.searchItemName}>{name}</div>

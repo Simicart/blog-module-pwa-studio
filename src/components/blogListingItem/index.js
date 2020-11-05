@@ -15,7 +15,7 @@ const BlogListingItem = props => {
     return (
         <div className={classes.blogpostItem}>
             {image ? <div className={classes.blogpostItemCol1} >
-                <img src={`/media/mageplaza/blog/post/resize/400x/${image}`} alt={name} />
+                <img src={image} alt={name} />
             </div> : ''}
             <div className={classes.blogpostItemCol2} >
                 <h2>

@@ -53,7 +53,7 @@ const Post = props => {
             <div className={classes.blogDetailsRoot}>
                 <div className={classes.blogDetailsContent}>
                     {!!postData.image &&
-                        <img src={`/media/mageplaza/blog/post/${postData.image}`} alt="post image" className={classes.blogpostImage} />
+                        <img src={postData.image} alt="post image" className={classes.blogpostImage} />
                     }
                     <RichContent classes={{ root: classes.blogPostRichContent }} html={postData.post_content} />
                     <div className={classes.blogDetailsPostInfo}>
