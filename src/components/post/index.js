@@ -16,6 +16,10 @@ import BlogPostInfo from '../blogPostInfo';
 import RelatedPosts from './relatedPosts';
 import SharingBlock from '../sharingBlock';
 
+import { Util } from '@magento/peregrine';
+const { BrowserPersistence } = Util;
+const storage = new BrowserPersistence();
+
 const Post = props => {
     const { postUrl = "" } = useParams();
     const talonProps = usePost({ postUrl });
@@ -30,6 +34,12 @@ const Post = props => {
 
     if (!resultData || !resultData.mpBlogPosts || !resultData.mpBlogPosts.items || !resultData.mpBlogPosts.items[0])
         return 'Cannot find item';
+
+    const simiBlogConfiguration = storage.getItem('simiBlogConfiguration');
+    let linkColor = '#1ABC9C';
+    if (simiBlogConfiguration && simiBlogConfiguration.general && simiBlogConfiguration.general.font_color) {
+        linkColor = simiBlogConfiguration.general.font_color;
+    }
 
     const postData = resultData.mpBlogPosts.items[0];
     return (
@@ -51,6 +61,11 @@ const Post = props => {
             }
             />
             <h1>{postData.name}</h1>
+            <style dangerouslySetInnerHTML={{
+                __html: `
+                    .${classes.blogPostRichContent} a { color: ${linkColor} }
+                    .${classes.relatedPostName} { color: ${linkColor} }
+            `}} />
             <div className={classes.blogDetailsRoot}>
                 <div className={classes.blogDetailsContent}>
                     {!!postData.image &&

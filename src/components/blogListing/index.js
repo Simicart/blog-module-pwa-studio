@@ -5,6 +5,9 @@ import { useBlogListing } from '../../talons/useBlogListing'
 import LoadingIndicator from '@magento/venia-ui/lib/components/LoadingIndicator';
 import BlogListingItem from '../blogListingItem'
 import Pagination from '@magento/venia-ui/lib/components/Pagination';
+import { Util } from '@magento/peregrine';
+const { BrowserPersistence } = Util;
+const storage = new BrowserPersistence();
 
 const BlogListing = props => {
     const { filterType, filterValue } = props;
@@ -18,6 +21,14 @@ const BlogListing = props => {
         pageSize,
         setPageSize
     } = talonProps
+
+    const simiBlogConfiguration = storage.getItem('simiBlogConfiguration');
+    console.log(simiBlogConfiguration)
+
+    let linkColor = '#1ABC9C';
+    if (simiBlogConfiguration && simiBlogConfiguration.general && simiBlogConfiguration.general.font_color) {
+        linkColor = simiBlogConfiguration.general.font_color;
+    }
 
     useEffect(() => {
         if (blogLoading) {
@@ -38,9 +49,14 @@ const BlogListing = props => {
         <div className={classes.blogListingCtn} >
             {
                 mpBlogPosts.items.map(item =>
-                    <BlogListingItem classes={classes} item={item} key={item.post_id} />
+                    <BlogListingItem classes={classes} item={item} key={item.post_id} simiBlogConfiguration={simiBlogConfiguration} />
                 )
             }
+            <style dangerouslySetInnerHTML={{
+                __html: `
+                .${classes.blogpostItem} h2 { color: ${linkColor} }
+                .${classes.readMore} { color: ${linkColor} }
+            `}} />
             <div className={classes.pagination}>
                 <Pagination pageControl={pageControl} />
             </div>
@@ -49,8 +65,8 @@ const BlogListing = props => {
                 <span className={classes.pageSizeInput}>
                     <select
                         onChange={e => {
-                                setPageSize(e.target.value); pageControl.setPage(1)
-                            }
+                            setPageSize(e.target.value); pageControl.setPage(1)
+                        }
                         }
                         value={pageSize}
                     >

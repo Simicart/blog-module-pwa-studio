@@ -4,14 +4,17 @@ import BlogPostInfo from '../blogPostInfo'
 import RichText from '@magento/venia-ui/lib/components/RichText'
 
 const BlogListingItem = props => {
-    const { classes, item } = props;
+    const { classes, item, simiBlogConfiguration } = props;
     const {
         name,
         url_key,
         short_description,
         image
     } = item;
-
+    let linkColor = '#1ABC9C';
+    if (simiBlogConfiguration && simiBlogConfiguration.general && simiBlogConfiguration.general.font_color) {
+        linkColor = simiBlogConfiguration.general.font_color;
+    }
     return (
         <div className={classes.blogpostItem}>
             {image ? <div className={classes.blogpostItemCol1} >
@@ -19,7 +22,7 @@ const BlogListingItem = props => {
             </div> : ''}
             <div className={classes.blogpostItemCol2} >
                 <h2>
-                    <Link to={`/blog/post/${url_key}.html`} style={{color: '#1ABC9C'}}>
+                    <Link to={`/blog/post/${url_key}.html`} style={{ color: linkColor }}>
                         {name}
                     </Link>
                 </h2>

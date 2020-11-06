@@ -14,7 +14,6 @@
     transition: box-shadow 0.3s ease-in-out;
 }
 .blogpostItem h2 {
-    color: #1abc9c;
     margin-bottom: 10px;
     font-weight: 300;
     line-height: 1.1;
@@ -67,7 +66,6 @@
 .readMore {
     margin-top: 15px;
     line-height: 18px;
-    color: #1abc9c;
     font-size: 17px;
 }
 .pageSize {

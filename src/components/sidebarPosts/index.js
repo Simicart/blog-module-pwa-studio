@@ -3,6 +3,9 @@ import classes from './sidebarPosts.css'
 import { useSidebarPosts } from '../../talons/useSidebarPosts'
 import LoadingIndicator from '@magento/venia-ui/lib/components/LoadingIndicator';
 import { Link } from '@magento/venia-drivers';
+import { Util } from '@magento/peregrine';
+const { BrowserPersistence } = Util;
+const storage = new BrowserPersistence();
 
 const PostItem = props => {
     const {
@@ -38,6 +41,12 @@ const SidebarPosts = props => {
         latestLoading
     } = useSidebarPosts();
 
+    const simiBlogConfiguration = storage.getItem('simiBlogConfiguration');
+    let linkColor = '#1ABC9C';
+    if (simiBlogConfiguration && simiBlogConfiguration.general && simiBlogConfiguration.general.font_color) {
+        linkColor = simiBlogConfiguration.general.font_color;
+    }
+
     const popPosts = useMemo(() => {
         if (popData && popData.mpBlogPosts && popData.mpBlogPosts.items) {
             return popData.mpBlogPosts.items.map(item => <PostItem item={item} key={item.url_key} />)
@@ -55,6 +64,10 @@ const SidebarPosts = props => {
 
     return (
         <div className={classes.root}>
+            <style dangerouslySetInnerHTML={{
+                __html: `
+                .${classes.sidebarPostItemName} { color: ${linkColor} }
+            `}} />
             <div className={classes.tabsHeaders}>
                 <div className={`${classes.tabsHeader} ${tab === 'pop' ? classes.active : classes.inactive}`}
                     onClick={() => setTab('pop')}

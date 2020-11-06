@@ -3,6 +3,10 @@ import { Link } from '@magento/venia-drivers';
 import Icon from '@magento/venia-ui/lib/components/Icon';
 import { Calendar as CalendarIc, User as AuthorIc, Eye as EyeIc } from 'react-feather';
 
+import { Util } from '@magento/peregrine';
+const { BrowserPersistence } = Util;
+const storage = new BrowserPersistence();
+
 const calenderIcon = <Icon src={CalendarIc} attrs={{ width: 11 }} />;
 const authorIcon = <Icon src={AuthorIc} attrs={{ width: 11 }} />;
 const eyeIcon = <Icon src={EyeIc} attrs={{ width: 11 }} />;
@@ -17,6 +21,12 @@ const BlogPostInfo = props => {
         author_url_key,
         view_traffic
     } = item;
+
+    const simiBlogConfiguration = storage.getItem('simiBlogConfiguration');
+    let displayAuthor = false;
+    if (simiBlogConfiguration && simiBlogConfiguration.general && simiBlogConfiguration.general.display_author) {
+        displayAuthor = true;
+    }
 
     return (
         <div className={classes.blogpostInfo}>
@@ -45,15 +55,20 @@ const BlogPostInfo = props => {
                     </React.Fragment>
                     :
                     ''
+            }
+            {
+                displayAuthor &&
+                <React.Fragment> |
+                    <span className={classes.authorIcon}>
+                        {authorIcon}
+                    </span>
+                    <span className={classes.authorName}>
+                        <Link to={`/blog/author/${author_url_key}.html?author_name=${author_name}&author_id=${author_id}`}>
+                            {author_name}
+                        </Link>
+                    </span>
+                </React.Fragment>
             } |
-            <span className={classes.authorIcon}>
-                {authorIcon}
-            </span>
-            <span className={classes.authorName}>
-                <Link to={`/blog/author/${author_url_key}.html?author_name=${author_name}&author_id=${author_id}`}>
-                    {author_name}
-                </Link>
-            </span> |
             <span className={classes.eyeIcon}>
                 {eyeIcon}
             </span>
