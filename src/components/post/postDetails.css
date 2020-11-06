@@ -104,6 +104,17 @@
     font-size: 20px;
     margin-bottom: 15px;
 }
+.relatedProductRoot {
+    max-width: 300px;
+    min-width: 250px;
+    width: 30%;
+    margin-inline-end: 15px;
+}
+.relatedProducts .sectionContent{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: auto;
+} 
 .relatedPosts ul li {
     background-color: unset !important;
 }

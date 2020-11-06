@@ -15,7 +15,7 @@ const RelatedPosts = props => {
     items.map((item, index) => {
         currentRow.push(
             <div className={`${classes.relatedPostItem} ${isPhone ? classes.isPhone : ''}`} key={item.url_key}>
-                <div style={{ backgroundImage: `url("${item.image})` }} className={classes.blogrelatedPostImage} />
+                <div style={{ backgroundImage: `url("${item.image}")` }} className={classes.blogrelatedPostImage} />
                 <Link to={`/blog/post/${item.url_key}.html`} >
                     <div className={classes.relatedPostName}>{item.name}</div>
                 </Link>

@@ -15,6 +15,7 @@ import RichContent from '@magento/venia-ui/lib/components/RichContent';
 import BlogPostInfo from '../blogPostInfo';
 import RelatedPosts from './relatedPosts';
 import SharingBlock from '../sharingBlock';
+import RelatedProducts from './relatedProducts'
 
 import { Util } from '@magento/peregrine';
 const { BrowserPersistence } = Util;
@@ -87,24 +88,7 @@ const Post = props => {
                         </div>
                     }
                     {!!(postData && postData.products && postData.products.items && postData.products.items.length) &&
-                        <div className={`${classes.relatedPosts} ${classes.detailsSection}`}>
-                            <div className={classes.sectionHeader}>
-                                {`Related Products`}
-                            </div>
-                            <div className={classes.sectionContent}>
-                                <div className={classes.relatedProductSlide}>
-                                    {
-                                        postData.products.items.map(productItem => {
-                                            return (
-                                                <div className={classes.relatedProductSlideItem}>
-                                                    <div>{productItem.sku}</div>
-                                                </div>
-                                            )
-                                        })
-                                    }
-                                </div>
-                            </div>
-                        </div>
+                        <RelatedProducts items={postData.products.items} classes={classes} />
                     }
                 </div>
                 <div className={classes.blogSidebar}>

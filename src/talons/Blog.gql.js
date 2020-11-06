@@ -396,3 +396,29 @@ export const GET_BLOG_ARCHIVE_DETAILS = gql`
     }
     ${PostFragment}
 `
+
+export const GET_PRODUCTS_BY_SKUS = gql`
+    query getProductsBySku($skus: [String], $pageSize: Int!) {
+        products(filter: { sku: { in: $skus } }, pageSize: $pageSize) {
+            items {
+                id
+                name
+                sku
+                small_image {
+                    url
+                }
+                url_key
+                url_suffix
+                price {
+                    regularPrice {
+                        amount {
+                            value
+                            currency
+                        }
+                    }
+                }
+            }
+            total_count
+        }
+    }
+`
