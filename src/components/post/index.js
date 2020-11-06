@@ -25,6 +25,47 @@ const storage = new BrowserPersistence();
 const Post = props => {
     const { postUrl = "" } = useParams();
     const talonProps = usePost({ postUrl });
+
+    const fbRef = useRef(null);
+    useEffect(() => {
+        try {
+            window.fbAsyncInit = function () {
+                FB.init({
+                    appId: '1431353733653196',
+                    autoLogAppEvents: true,
+                    xfbml: true,
+                    version: 'v8.0'
+                });
+            };
+        } catch (err) {
+
+        }
+
+        try {
+            (function (d, s, id) {
+                if (!window.simiImportedFB) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) { return; }
+                    js = d.createElement(s); js.id = id;
+                    js.src = "//connect.facebook.net/en_US/sdk.js";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }
+            }(document, 'script', 'facebook-jssdk'));
+        } catch (err) {
+
+        }
+    }, [postUrl]);
+
+    useEffect(() => {
+        try {
+            if (global.document && has(global.window, "FB")) {
+                global.FB.XFBML.parse(fbRef.current);
+            }
+        } catch (err) {
+
+        }
+    }, [postUrl]);
+
     if (!postUrl)
         return '';
     const {
@@ -45,33 +86,6 @@ const Post = props => {
 
     const postData = resultData.mpBlogPosts.items[0];
     const urlToComment = window.location.href;
-
-    const fbRef = useRef(null);
-    useEffect(() => {
-        window.fbAsyncInit = function () {
-            FB.init({
-                appId: '1431353733653196',
-                autoLogAppEvents: true,
-                xfbml: true,
-                version: 'v8.0'
-            });
-        };
-
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) { return; }
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    }, [postUrl]);
-
-    useEffect(() => {
-        if (global.document && has(global.window, "FB")) {
-            global.FB.XFBML.parse(fbRef.current);
-        }
-    }, [postUrl]);
-
 
     return (
         <div className={classes.root}>
