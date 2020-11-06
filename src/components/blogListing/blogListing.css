@@ -9,6 +9,15 @@
     margin-bottom: 20px;
     display: flex;
 }
+.blogpostItemList {
+    width: 100%;
+}
+.blogpostItemGrid {
+    width: 45%;
+    display: inline-grid;
+    margin-inline-end: 20px;
+    flex-wrap: wrap;
+}
 .blogpostItem:hover {
     box-shadow: 0px 5px 15px -5px;
     transition: box-shadow 0.3s ease-in-out;
@@ -37,6 +46,9 @@
 @media (max-width: 767px) {
     .blogpostItem {
         flex-wrap: wrap;
+    }
+    .blogpostItemGrid {
+        width: 100%;
     }
     .blogpostItemCol1 {
         flex-grow: unset;

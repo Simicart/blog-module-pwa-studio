@@ -8,10 +8,28 @@ import TagList from '../tagList';
 import TopicList from '../topicList';
 import SidebarPosts from '../sidebarPosts';
 import SimibarMonthlyListing from '../simibarMonthlyListing';
+import { Title, Meta } from '@magento/venia-ui/lib/components/Head';
+import { Util } from '@magento/peregrine';
+const { BrowserPersistence } = Util;
+const storage = new BrowserPersistence();
 
 const Home = props => {
+    const simiBlogConfiguration = storage.getItem('simiBlogConfiguration');
+    let title = 'Blog'
+    let description = ''
+    let titleName = 'Blog'
+    if (simiBlogConfiguration && simiBlogConfiguration.seo && simiBlogConfiguration.general) {
+        if (simiBlogConfiguration.seo.meta_title)
+            title = simiBlogConfiguration.seo.meta_title
+        if (simiBlogConfiguration.seo.meta_description)
+            description = simiBlogConfiguration.seo.meta_description
+        if (simiBlogConfiguration.general.name)
+            titleName = simiBlogConfiguration.general.name
+    }
     return (
         <div className={classes.mainCtn}>
+            <Title>{title}</Title>
+            <Meta name="description" content={description} />
             <BreadCrumb items={
                 [
                     {
@@ -20,7 +38,7 @@ const Home = props => {
                 ]
             }
             />
-            <h1>{`Blog`}</h1>
+            <h1>{titleName}</h1>
             <div className={classes.blogRoot}>
                 <div className={classes.blogListing}>
                     <BlogListing classes={classes} />

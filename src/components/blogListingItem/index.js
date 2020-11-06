@@ -15,14 +15,18 @@ const BlogListingItem = props => {
     if (simiBlogConfiguration && simiBlogConfiguration.general && simiBlogConfiguration.general.font_color) {
         linkColor = simiBlogConfiguration.general.font_color;
     }
+    let displayStyle = 1;
+    if (simiBlogConfiguration && simiBlogConfiguration.general && simiBlogConfiguration.general.display_style) {
+        displayStyle = parseInt(simiBlogConfiguration.general.display_style);
+    }
     return (
-        <div className={classes.blogpostItem}>
+        <div className={`${classes.blogpostItem} ${displayStyle === 1 ? classes.blogpostItemList : classes.blogpostItemGrid}`}>
             {image ? <div className={classes.blogpostItemCol1} >
                 <img src={image} alt={name} />
             </div> : ''}
             <div className={classes.blogpostItemCol2} >
                 <h2>
-                    <Link to={`/blog/post/${url_key}.html`} style={{ color: linkColor }}>
+                    <Link to={`/ blog / post / ${url_key}.html`} style={{ color: linkColor }}>
                         {name}
                     </Link>
                 </h2>
@@ -30,7 +34,7 @@ const BlogListingItem = props => {
                 <div className={classes.blogpostDescription}>
                     <RichText classes={{ root: classes.blogpostDescriptionRichtext }} content={short_description} />
                 </div>
-                <Link to={`/blog/post/${url_key}.html`}>
+                <Link to={`/ blog / post / ${url_key}.html`}>
                     <div className={classes.readMore}>
                         {'Read More'}
                     </div>
