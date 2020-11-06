@@ -46,6 +46,11 @@ module.exports = targets => {
             path: require.resolve("./components/month/index.js")
         });
         routes.push({
+            name: "BlogAuthor",
+            pattern: "/blog/author/:authorUrl?",
+            path: require.resolve("./components/author/index.js")
+        });
+        routes.push({
             name: "BlogPost",
             pattern: "/blog/post/:postUrl?",
             path: require.resolve("./components/post/index.js")

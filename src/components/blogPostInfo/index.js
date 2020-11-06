@@ -13,6 +13,7 @@ const BlogPostInfo = props => {
         publish_date,
         categories,
         author_name,
+        author_id,
         author_url_key,
         view_traffic
     } = item;
@@ -49,7 +50,7 @@ const BlogPostInfo = props => {
                 {authorIcon}
             </span>
             <span className={classes.authorName}>
-                <Link to={`/blog/author/${author_url_key}.html`}>
+                <Link to={`/blog/author/${author_url_key}.html?author_name=${author_name}&author_id=${author_id}`}>
                     {author_name}
                 </Link>
             </span> |
