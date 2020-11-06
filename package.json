@@ -33,6 +33,7 @@
     "@magento/venia-ui": ">=5.0.0",
     "react-dropdown-tree-select": "^2.5.1",
     "react-responsive-carousel": "^3.2.10",
+    "lodash": "^4.17.4",
     "react-social-sharing": "^3.3.0"
   },
   "devDependencies": {

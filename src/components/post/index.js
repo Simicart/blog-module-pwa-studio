@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import { usePost } from '../../talons/usePost'
 import { useParams } from "react-router-dom";
 import LoadingIndicator from '@magento/venia-ui/lib/components/LoadingIndicator';
@@ -16,6 +16,7 @@ import BlogPostInfo from '../blogPostInfo';
 import RelatedPosts from './relatedPosts';
 import SharingBlock from '../sharingBlock';
 import RelatedProducts from './relatedProducts'
+import { has } from "lodash/object";
 
 import { Util } from '@magento/peregrine';
 const { BrowserPersistence } = Util;
@@ -43,6 +44,35 @@ const Post = props => {
     }
 
     const postData = resultData.mpBlogPosts.items[0];
+    const urlToComment = window.location.href;
+
+    const fbRef = useRef(null);
+    useEffect(() => {
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '1431353733653196',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v8.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    }, [postUrl]);
+
+    useEffect(() => {
+        if (global.document && has(global.window, "FB")) {
+            global.FB.XFBML.parse(fbRef.current);
+        }
+    }, [postUrl]);
+
+
     return (
         <div className={classes.root}>
             <Title>{postData.meta_title ? postData.meta_title : postData.name}</Title>
@@ -90,6 +120,15 @@ const Post = props => {
                     {!!(postData && postData.products && postData.products.items && postData.products.items.length) &&
                         <RelatedProducts items={postData.products.items} classes={classes} />
                     }
+                    <div ref={fbRef}>
+                        <div
+                            className="fb-comments"
+                            data-href={`${urlToComment}`}
+                            data-width="100%"
+                            data-numposts="5"
+                            style={{ width: "100%" }}
+                        />
+                    </div>
                 </div>
                 <div className={classes.blogSidebar}>
                     <SearchBlog />
