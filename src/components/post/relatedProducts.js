@@ -28,7 +28,7 @@ const RelatedProducts = props => {
                 pageSize: 999
             }
         })
-        
+
     if (loading)
         return <LoadingIndicator />
     if (!productItems || !productItems.products || !productItems.products.items)
@@ -42,7 +42,7 @@ const RelatedProducts = props => {
             </div>
             <div className={classes.sectionContent}>
                 {productItems.products.items.map(
-                    productitem => <GalleryItem classes={classesToItem} item={mapGalleryItem(productitem)} />
+                    (productitem, index) => <GalleryItem classes={classesToItem} item={mapGalleryItem(productitem)} key={index} />
                 )}
             </div>
         </div>

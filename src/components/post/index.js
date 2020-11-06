@@ -25,7 +25,10 @@ const storage = new BrowserPersistence();
 const Post = props => {
     const { postUrl = "" } = useParams();
     const talonProps = usePost({ postUrl });
-
+    const {
+        resultData,
+        resultLoading
+    } = talonProps
     const fbRef = useRef(null);
     useEffect(() => {
         try {
@@ -58,20 +61,17 @@ const Post = props => {
 
     useEffect(() => {
         try {
-            if (global.document && has(global.window, "FB")) {
+            if (resultData && global.document && has(global.window, "FB")) {
+                console.log('eee')
                 global.FB.XFBML.parse(fbRef.current);
             }
         } catch (err) {
 
         }
-    }, [postUrl]);
+    }, [postUrl, resultData]);
 
     if (!postUrl)
         return '';
-    const {
-        resultData,
-        resultLoading
-    } = talonProps
     if (resultLoading)
         return <LoadingIndicator />
 
