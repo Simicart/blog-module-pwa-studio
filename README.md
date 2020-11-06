@@ -20,14 +20,27 @@ From the root directory of the project you created above, clone the repository:
   git clone https://github.com/Simicart/blog-module-pwa-studio ./@simicart/blog
 ```
 
-## 4. Modify .env
+## 4. Add facebook comment
+
+To add facebook comment, edit the file at
+```
+node_modules/@magento/upward-security-headers/upward.yml
+```
+
+and modify inline value:
+
+```
+inline: "script-src http: https: {{ backend }}; style-src 'self' https: 'unsafe-inline' {{ backend }}; img-src data: http: https:; object-src 'none'; base-uri 'none'; child-src 'self'; font-src 'self' fonts.gstatic.com; frame-src assets.braintreegateway.com *.youtube.com *.youtu.be *.vimeo.com *.facebook.net *.facebook.com"
+```
+
+## 5. Modify .env
 
 Change the .env MAGENTO_BACKEND_URL with your magento site URL, or use our demo URL:
 
 ```
   MAGENTO_BACKEND_URL=https://mp.pwa-commerce.com/
 ```
-## 5. Modify package.json
+## 6. Modify package.json
 
 Modify the dependencies of project to add blog extension.
 
@@ -41,7 +54,7 @@ Modify the dependencies of project to add blog extension.
   },
 ```
 
-## 6. Install and Start Project
+## 7. Install and Start Project
 
 ```
   yarn install && yarn watch

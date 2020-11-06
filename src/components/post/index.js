@@ -62,7 +62,6 @@ const Post = props => {
     useEffect(() => {
         try {
             if (resultData && global.document && has(global.window, "FB")) {
-                console.log('eee')
                 global.FB.XFBML.parse(fbRef.current);
             }
         } catch (err) {
