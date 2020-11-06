@@ -39,6 +39,14 @@ export const useBlogListing = props => {
         case 'get_post_by_tagName':
             variables.tagName = filterValue;
             break;
+        case 'get_post_by_date_time':
+            variables.filter = {
+                created_at: {
+                    like: `%${filterValue}%`
+                }
+            };
+            variables.action = 'get_post_list';
+            break;
         default:
             break;
     }

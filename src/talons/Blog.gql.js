@@ -369,6 +369,24 @@ export const GET_BLOG_ARCHIVE = gql`
             items {
                 label
                 quantity
+            }
+            total_count
+        }
+    }
+`
+
+export const GET_BLOG_ARCHIVE_DETAILS = gql`
+    query mpBlogMonthlyArchive(
+        $monthly: Int!,
+        $year: Int!
+    ) {
+        mpBlogMonthlyArchive(
+            monthly: $monthly,
+            year: $year
+        ) {
+            items {
+                label
+                quantity
                 items {
                     ...PostFragment
                 }

@@ -17,14 +17,21 @@ const SimibarMonthlyListing = props => {
         const archiveItems = archiveListData.mpBlogMonthlyArchive.items;
         return (
             <div className={classes.listRoot}>
-                <div className={classes.listHeader}>{`Topics`}</div>
+                <div className={classes.listHeader}>{`Monthly Archive`}</div>
                 <div className={classes.listItems}>
                     {archiveItems.map((archiveItem, index) => {
-                        return (
-                            <Link className={classes.listItem} to={`/blog/month/${index}.html`} key={archiveItem.label}>
-                                {calendarIcon} {archiveItem.label}
-                            </Link>
-                        )
+                        try {
+                            let archiveData = new Date(archiveItem.label);
+                            if (archiveData && archiveData.getFullYear() && archiveData.getMonth()) {
+                                return (
+                                    <Link className={classes.listItem} to={`/blog/month/${(archiveData.getFullYear())}-${(archiveData.getMonth() + 1)}.html`} key={archiveItem.label}>
+                                        {calendarIcon} {archiveItem.label} ({archiveItem.quantity})
+                                    </Link>
+                                )
+                            }
+                        } catch (err) {
+
+                        }
                     })}
                 </div>
             </div>
