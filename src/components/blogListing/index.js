@@ -23,7 +23,6 @@ const BlogListing = props => {
     } = talonProps
 
     const simiBlogConfiguration = storage.getItem('simiBlogConfiguration');
-    console.log(simiBlogConfiguration)
 
     let linkColor = '#1ABC9C';
     if (simiBlogConfiguration && simiBlogConfiguration.general && simiBlogConfiguration.general.font_color) {

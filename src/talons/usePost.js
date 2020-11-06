@@ -15,7 +15,6 @@ export const usePost = props => {
             skip: !postUrl
         }
     )
-    console.log(resultData)
     return {
         resultData,
         resultLoading
