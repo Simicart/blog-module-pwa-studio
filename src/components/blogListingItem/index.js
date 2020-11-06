@@ -26,7 +26,7 @@ const BlogListingItem = props => {
             </div> : ''}
             <div className={classes.blogpostItemCol2} >
                 <h2>
-                    <Link to={`/ blog / post / ${url_key}.html`} style={{ color: linkColor }}>
+                    <Link to={`/blog/post/${url_key}.html`} style={{ color: linkColor }}>
                         {name}
                     </Link>
                 </h2>
@@ -34,7 +34,7 @@ const BlogListingItem = props => {
                 <div className={classes.blogpostDescription}>
                     <RichText classes={{ root: classes.blogpostDescriptionRichtext }} content={short_description} />
                 </div>
-                <Link to={`/ blog / post / ${url_key}.html`}>
+                <Link to={`/blog/post/${url_key}.html`}>
                     <div className={classes.readMore}>
                         {'Read More'}
                     </div>
