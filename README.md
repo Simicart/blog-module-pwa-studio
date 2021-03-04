@@ -13,10 +13,9 @@ End result: https://blog.pwa-commerce.com/blog.html
 
 ### 1. Init project
 ```
-npm init @magento/pwa@1.1.2
+   git clone https://github.com/Simicart/simi-studio --branch release/2.0.0
+   cd simi-studio
 ```
-
-Fill in your project information and `cd` into it.
 
 ### 2. Start the project
 
@@ -52,7 +51,7 @@ Modify the dependencies of the project to add the Blog extension.
 
 ```
   "dependencies": {
-    "@magento/pwa-buildpack": "~7.0.0",
+    ...
     "@simicart/blog": "link:./@simicart/blog",
     "react-dropdown-tree-select": "^2.5.1",
     "react-responsive-carousel": "^3.2.10",
